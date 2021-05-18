@@ -36,7 +36,11 @@
                         <li class="nad-item">
                             <a class="nav-link" href="/home">Podesavanja</a>
                         </li>
-                        
+                        @foreach(App\Models\Page::all() as $page)
+                            <li class="nad-item">
+                                <a class="nav-link" href="/page/{{ $page->id }}">{{ $page->name }}</a>
+                            </li>
+                        @endforeach
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -82,5 +86,6 @@
             @yield('content')
         </main>
     </div>
+    @yield('scripts')
 </body>
 </html>

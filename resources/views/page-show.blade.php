@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Podesavanja</div>
+                <div class="card-header">{{ \App\Models\Page::find($id)->name }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,16 +14,12 @@
                         </div>
                     @endif
 
-                    Stranice:
-                    <hr>
-                    <form action="/page/store" method="POST">
+                    <form action="/data/store" method="POST">
                         @csrf
-                        @foreach($pages as $page)
-                            <p>
-                                <input type="text" name="page_{{ $page->id }}" value="{{ $page->name }}">
-                            </p>
-                        @endforeach
-                        <input type="submit" value="Promeni nazive strana">
+                        <input type="hidden" name="page" value="{{ $id }}">
+                        <textarea rows="5" name="data_title" class="form-control"></textarea>
+                        <textarea rows="30" name="data_text" class="form-control"></textarea>
+                        <input type="submit" class="btn btn-primary" value="Unezi podatke">
                     </form>                        
                 </div>
             </div>
