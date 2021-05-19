@@ -15,6 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Comic Neue' rel='stylesheet'>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -32,15 +33,18 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="nav nav-pills">
                         <li class="nad-item">
-                            <a class="nav-link" href="/home">Podesavanja</a>
+                            <a class="nav-link {{ (\Request::is('data*')) ? 'active' : '' }}" href="/data">Prikaz podataka</a>
                         </li>
                         @foreach(App\Models\Page::all() as $page)
                             <li class="nad-item">
-                                <a class="nav-link" href="/page/{{ $page->id }}">{{ $page->name }}</a>
+                                <a class="nav-link {{ (\Request::is('page/'.$page->id )) ? 'active' : '' }}" href="/page/{{ $page->id }}">{{ $page->name }}</a>
                             </li>
                         @endforeach
+                        <li class="nad-item">
+                            <a class="nav-link {{ (\Request::is('home')) ? 'active' : '' }}" href="/home">Podesavanja</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -83,7 +87,25 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            @auth
+                @if( Auth::user()->is_admin == 1 )
+                    @yield('content')
+                @else
+                    <div class="container">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-6 alert alert-warning text-center">
+                                Nemate ovlascenje za koriscenje sistema.<br>Ukoliko smatrate da je to greska molimo da se obratite administratoru.
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            @endauth
+
+            @guest
+                @if(\Request::is('login') || \Request::is('register'))
+                    @yield('content')
+                @endif
+            @endguest
         </main>
     </div>
     @yield('scripts')

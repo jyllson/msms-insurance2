@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- ********************************************************** -->
-        <meta http-equiv="refresh" content="0; url=/home" />
+        <meta http-equiv="refresh" content="0; url={{ url('/') }}/data" />
         <!-- ********************************************************** -->
 
         <title>Insurance App</title>

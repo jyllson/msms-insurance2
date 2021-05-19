@@ -7,6 +7,16 @@ use App\Models\Data;
 
 class DataController extends Controller
 {
+	public function index()
+	{
+		return view('data-show');
+	}
+
+    public function show($id)
+    {
+        return view('page-show-data', compact('id'));
+    }
+
     public function store(Request $request)
     {
     	//dd($request);

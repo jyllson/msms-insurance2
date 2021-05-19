@@ -14,13 +14,12 @@
                         </div>
                     @endif
 
-                    Stranice:
-                    <hr>
-                    <form action="/page/store" method="POST">
+                    
+                    <form action="{{ url('/') }}/page/store" method="POST">
                         @csrf
                         @foreach($pages as $page)
                             <p>
-                                <input type="text" name="page_{{ $page->id }}" value="{{ $page->name }}">
+                                <input type="text" name="page_{{ $page->id }}" value="{{ $page->name }}" style="font-family: 'Comic Neue', sans-serif; font-size: 20px; ">
                             </p>
                         @endforeach
                         <input type="submit" value="Promeni nazive strana">

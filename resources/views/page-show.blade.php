@@ -14,11 +14,11 @@
                         </div>
                     @endif
 
-                    <form action="/data/store" method="POST">
+                    <form action="{{ url('/') }}/data/store" method="POST">
                         @csrf
                         <input type="hidden" name="page" value="{{ $id }}">
-                        <textarea rows="5" name="data_title" class="form-control"></textarea>
-                        <textarea rows="30" name="data_text" class="form-control"></textarea>
+                        <textarea rows="5" name="data_title" class="form-control" style="font-family: 'Comic Neue', sans-serif; font-size: 20px; "></textarea>
+                        <textarea rows="30" name="data_text" class="form-control" style="font-family: 'Comic Neue', sans-serif; font-size: 20px; "></textarea>
                         <input type="submit" class="btn btn-primary" value="Unezi podatke">
                     </form>                        
                 </div>
