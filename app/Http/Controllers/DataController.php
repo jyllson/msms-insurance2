@@ -9,7 +9,9 @@ class DataController extends Controller
 {
 	public function index()
 	{
-		return view('data-show');
+        $id = '';
+
+		return view('data-show', compact('id'));
 	}
 
     public function show($id)
