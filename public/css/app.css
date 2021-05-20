@@ -9908,6 +9908,11 @@ a.text-dark:hover, a.text-dark:focus {
   visibility: hidden !important;
 }
 
+.zeleno {
+  color: black;
+  background-color: #abeab5;
+}
+
 @media print {
   *,
 *::before,

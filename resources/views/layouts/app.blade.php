@@ -35,7 +35,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav nav-pills">
                         <li class="nad-item">
-                            <a class="nav-link {{ (\Request::is('data*')) ? 'active' : '' }}" href="{{ url('/') }}/data">Prikaz podataka</a>
+                            <a class="nav-link {{ (\Request::is('data*')) ? 'active' : '' }}" href="{{ url('/') }}/data">Preview</a>
                         </li>
                         @auth
                             @foreach(App\Models\Page::all() as $page)
@@ -44,7 +44,7 @@
                                 </li>
                             @endforeach
                             <li class="nad-item">
-                                <a class="nav-link {{ (\Request::is('home')) ? 'active' : '' }}" href="{{ url('/') }}/home">Podesavanja</a>
+                                <a class="nav-link {{ (\Request::is('home')) ? 'active' : '' }}" href="{{ url('/') }}/home">Settings</a>
                             </li>
                         @endauth
                     </ul>
@@ -97,6 +97,8 @@
                         <div class="row justify-content-md-center">
                             <div class="col-md-6 alert alert-warning text-center">
                                 Nemate ovlascenje za koriscenje sistema.<br>Ukoliko smatrate da je to greska molimo da se obratite administratoru.
+                                <hr>
+                                You don't have enough privileges to administer this system. If you believe this is an error please contact the Administrator.
                             </div>
                         </div>
                     </div>

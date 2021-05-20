@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Prikaz podataka</div>
+                <div class="card-header">Preview of {{ \App\Models\Page::find($id)->name }}</div>
 
                 <div class="card-body">
                     @if(session('status'))
@@ -17,7 +17,7 @@
                     <ul class="nav nav-tabs">
                         @foreach(\App\Models\Page::all() as $page)                        
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ url('/') }}/data/{{ $page->id }}">
+                                <a class="nav-link {{ $page->id == $id ? 'zeleno' : '' }}" aria-current="page" href="{{ url('/') }}/data/{{ $page->id }}">
                                     {{ $page->name }}
                                 </a>
                             </li>                        
