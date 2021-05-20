@@ -37,14 +37,16 @@
                         <li class="nad-item">
                             <a class="nav-link {{ (\Request::is('data*')) ? 'active' : '' }}" href="{{ url('/') }}/data">Prikaz podataka</a>
                         </li>
-                        @foreach(App\Models\Page::all() as $page)
+                        @auth
+                            @foreach(App\Models\Page::all() as $page)
+                                <li class="nad-item">
+                                    <a class="nav-link {{ (\Request::is('page/'.$page->id )) ? 'active' : '' }}" href="{{ url('/') }}/page/{{ $page->id }}">{{ $page->name }}</a>
+                                </li>
+                            @endforeach
                             <li class="nad-item">
-                                <a class="nav-link {{ (\Request::is('page/'.$page->id )) ? 'active' : '' }}" href="{{ url('/') }}/page/{{ $page->id }}">{{ $page->name }}</a>
+                                <a class="nav-link {{ (\Request::is('home')) ? 'active' : '' }}" href="{{ url('/') }}/home">Podesavanja</a>
                             </li>
-                        @endforeach
-                        <li class="nad-item">
-                            <a class="nav-link {{ (\Request::is('home')) ? 'active' : '' }}" href="{{ url('/') }}/home">Podesavanja</a>
-                        </li>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -102,7 +104,7 @@
             @endauth
 
             @guest
-                @if(\Request::is('login') || \Request::is('register'))
+                @if(\Request::is('login') || \Request::is('register') || \Request::is('data*'))
                     @yield('content')
                 @endif
             @endguest

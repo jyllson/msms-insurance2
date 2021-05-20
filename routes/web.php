@@ -26,7 +26,8 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('page/{id}', [App\Http\Controllers\PageController::class, 'show'])->name('page-show');
 	Route::post('page/store', [App\Http\Controllers\PageController::class, 'store'])->name('page-store');
 	Route::post('data/store', [App\Http\Controllers\DataController::class, 'store'])->name('data-store');
-	Route::get('data', [App\Http\Controllers\DataController::class, 'index'])->name('data-index');
-	Route::get('data/{id}', [App\Http\Controllers\DataController::class, 'show'])->name('data-show');
 
 });
+
+Route::get('data', [App\Http\Controllers\DataController::class, 'index'])->name('data-index');
+Route::get('data/{id}', [App\Http\Controllers\DataController::class, 'show'])->name('data-show');

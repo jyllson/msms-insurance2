@@ -19,7 +19,7 @@
                         <input type="hidden" name="page" value="{{ $id }}">
                         <textarea rows="5" name="data_title" class="form-control" style="font-family: 'Comic Neue', sans-serif; font-size: 20px; "></textarea>
                         <textarea rows="30" name="data_text" class="form-control" style="font-family: 'Comic Neue', sans-serif; font-size: 20px; "></textarea>
-                        <input type="submit" class="btn btn-primary" value="Unezi podatke">
+                        <input type="submit" class="btn btn-primary" value="Unesi podatke">
                     </form>                        
                 </div>
             </div>

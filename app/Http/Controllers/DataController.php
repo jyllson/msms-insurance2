@@ -14,7 +14,9 @@ class DataController extends Controller
 
     public function show($id)
     {
-        return view('page-show-data', compact('id'));
+        $datas = Data::where('page_id', '=', $id)->latest()->paginate(5);
+
+        return view('page-show-data', compact('id', 'datas'));
     }
 
     public function store(Request $request)
